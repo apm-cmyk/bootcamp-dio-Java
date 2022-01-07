@@ -1,22 +1,23 @@
 package fila;
 
-public class Fila {
+public class Fila<T> {
 
-	private No entradaFila;
+	private No<T> entradaFila;
 
 	public Fila() {
 		this.entradaFila = null;
 	}
 
-	public void enqueue(No novoNo) {
+	public void enqueue(T obj){
+		No<T> novoNo = new No<T> (obj);
 		novoNo.setReferenciaNo(entradaFila);
 		entradaFila = novoNo;
 	}
 
-	public No dequeue() {
+	public T dequeue() {
 		if (!this.isEmpty()) {
-			No primeiroNo = entradaFila;
-			No noAuxiliar = entradaFila;
+			No<T> primeiroNo = entradaFila;
+			No<T> noAuxiliar = entradaFila;
 			while (true) {
 				if (primeiroNo.getReferenciaNo() != null) {
 					noAuxiliar = primeiroNo;
@@ -26,15 +27,15 @@ public class Fila {
 					break;
 				}
 			}
-			return primeiroNo;
+			return (T) primeiroNo.getConteudoNo();
 		} else {
 			return null;
 		}
 	}
 
-	public No first() {
+	public T first() {
 		if (!this.isEmpty()) {
-			No primeiroNo = entradaFila;
+			No<T> primeiroNo = entradaFila;
 			while (true) {
 				if (primeiroNo.getReferenciaNo() != null) {
 					primeiroNo = primeiroNo.getReferenciaNo();
@@ -42,7 +43,7 @@ public class Fila {
 					break;
 				}
 			}
-			return primeiroNo;
+			return primeiroNo.getConteudoNo();
 		} else {
 			return null;
 		}
@@ -55,7 +56,7 @@ public class Fila {
 	@Override
 	public String toString() {
 		String stringRetorno = " ";
-		No noAuxiliar = entradaFila;
+		No<T> noAuxiliar = entradaFila;
 
 		if (entradaFila != null) {
 			while (true) {
