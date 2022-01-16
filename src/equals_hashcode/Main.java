@@ -25,7 +25,7 @@ public class Main {
 		System.out.println(new Carro("Marca X").hashCode());
 		System.out.println(new Carro("Marca Y").hashCode());
 		
-		//usando o metodo equals
+		//usan o metodo equals
 		
 		Carro carro1 = new Carro("Ford");
 		Carro carro2 = new Carro("BMW");
