@@ -1,4 +1,4 @@
-package listaCircular;
+package lista_circular;
 
 public class ListaCircular<T> {
 
